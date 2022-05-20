@@ -1,0 +1,71 @@
+<mvc:View controllerName="apphdlfiles.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout"
+	xmlns:u="sap.ui.unified"
+    xmlns:tnt="sap.tnt"
+    xmlns="sap.m">
+    <App id="app">
+    <pages>
+		<Page id="page" title="{i18n>SAP HDL Files}">
+		<content>
+				<tnt:ToolHeader id="_IDGenToolHeader1">
+                <IconTabHeader
+			id="iconTabHeader"
+			selectedKey="p1"
+			select=".onSelectTab"
+			backgroundDesign="Transparent"
+			mode="Inline">
+			<items>
+				<IconTabFilter id="_IDGenIconTabFilter1" text="GET OBJECTS" key="p1" />
+				<IconTabFilter id="_IDGenIconTabFilter2" text="PUT OBJECTS" key="p2"/>
+				<IconTabFilter id="_IDGenIconTabFilter3" text="OPEN OBJECTS" key="p3"/>
+				<IconTabFilter id="_IDGenIconTabFilter4" text="DELETE OBJECTS" key="p4"/>
+			</items>
+		</IconTabHeader>
+	</tnt:ToolHeader>    
+        
+    <NavContainer id="navCon" width="98%" class="navContainerControl sapUiSmallMarginBottom">
+		<Page id="p1" title="Get Files">
+<List
+		id="ProductList"
+		items="{DataModel>/}"
+		mode="MultiSelect"
+		includeItemInSelection="true">
+		<StandardListItem id="_IDGenStandardListItem1"
+			title="{FileStatus}"
+			description="{FileStatus}"
+			icon="{ProductPicUrl}"
+			iconDensityAware="false"
+			iconInset="false" />
+	</List>
+			</Page>
+
+        <Page id="p2" title="Upload Files">
+<l:VerticalLayout id="_IDGenVerticalLayout1">
+		<u:FileUploader
+			id="fileUploader"
+			name="myFileUpload"
+			uploadUrl="upload/"
+			tooltip="Upload your file to the local server"
+			uploadComplete="handleUploadComplete"/>
+		</l:VerticalLayout>
+    <Button
+            id="uploadfile"
+			text="Upload File"
+			press="handleUploadPress"/>
+			</Page>
+        <Page id="p3" title="Open Files">
+<Label id="labelId1" text="Open Objects" />
+			</Page>
+        <Page id="p4" title="Delete Files">
+<Label id="labelId2" text="Delete Objects" />
+			</Page>        
+    
+    </NavContainer>	
+
+    </content>
+	</Page>
+	</pages>		
+    </App>
+</mvc:View>
